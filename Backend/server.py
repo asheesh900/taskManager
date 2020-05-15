@@ -38,6 +38,46 @@ def createTask():
     cursor.close()
     return {"message": "Task created successfully"}
 
+# Get all the previous tasks of a user
+
+@app.route('/tasks', methods = ["GET"])
+def tasks():
+    user_id = token_decoder()['id']
+    
+    query = """SELECT tasks.id AS task_id, task_name,
+     projects.project_name AS project_name, users.name,
+     users.username, users.email, start_time, end_time
+     from tasks LEFT JOIN projects ON
+     projects.id = tasks.project_id LEFT JOIN users 
+     ON users.id = tasks.user_id WHERE user_id = %s ORDER BY start_time ASC """
+
+    cursor = mysql.connection.cursor()
+    cursor.execute(query, (user_id,))
+    result = cursor.fetchall()
+    cursor.close()
+    
+    task_list = list()
+    for item in result:
+        task_list.append(item)
+    
+    return {"tasks":task_list}
+
+# get all the projects
+
+@app.route('/projects', methods = ['GET'])
+def getProjects():
+    query = """SELECT * FROM projects"""
+    cursor = mysql.connection.cursor()
+    cursor.execute(query)
+    result = cursor.fetchall()
+    cursor.close()
+    
+    project_list = list()
+    for item in result:
+        project_list.append(item)
+
+    return {"projects": project_list}
+
 # Authentication
 
 @app.route('/auth/signup', methods = ['POST'])
@@ -81,7 +121,7 @@ def login():
         for user in user_data:
             if user["hashed_password"] == hash_cycle(user["salt"] + password):
                 encode_data = jwt.encode({"id": user["id"]}, 'masai', algorithm='HS256')
-                return json.dumps({"message": "Signin Successful!", "token": str(encode_data)})
+                return json.dumps({"message": "Signin Successful!", "username": user["username"], "token": str(encode_data)})
             else:
                 return {"message": "Wrong Password"}
     return {"message": "Please make sure you are a registered user."}
