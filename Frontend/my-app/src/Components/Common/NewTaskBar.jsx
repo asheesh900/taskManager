@@ -35,7 +35,7 @@ class NewTaskBar extends Component {
         return (
             <div className="projects">
                 <div>
-                    <input className="proj-search" placeholder="Search within the projects" />
+                    <span className="proj-search" placeholder="Search within the projects">Previous Tasks</span>
                 </div>
                 <div>
                     <select onChange = {this.handleSelect} className="proj-select">

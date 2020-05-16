@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {registerUser} from '../../Redux/Authorization/Action'
+import {Redirect} from 'react-router-dom'
 
 class Signup extends Component {
     constructor(props) {
@@ -33,35 +34,43 @@ class Signup extends Component {
     }
     
     render() {
+        const {isData} = this.props
         return (
-            <div className = "signup">
-                <h1>Signup</h1>
-                <div>
-                      <label htmlFor="name">Name</label>
-                      <input onChange = {this.handleChange} name = "name" type="text"/>
-                  </div>
-                  <div>
-                      <label htmlFor="username">Username</label>
-                      <input onChange = {this.handleChange} name = "username" type="text"/>
-                  </div>
-                  <div>
-                      <label htmlFor="email">Email</label>
-                      <input onChange = {this.handleChange} name = "email" type="email"/>
-                  </div>
-                  <div>
-                      <label htmlFor="password">Password</label>
-                      <input onChange = {this.handleChange} name = "password" type="password"/>
-                  </div>
-                  <div>
-                    <button onClick = {this.register} type = "submit">Register</button>
-                  </div>
-            </div>
+            isData ? 
+            (
+                <Redirect to = "/logIn" />
+            ) :
+            (
+                <div className = "signup">
+                    <h1>Signup</h1>
+                    <div>
+                        <label htmlFor="name">Name</label>
+                        <input onChange = {this.handleChange} name = "name" type="text"/>
+                    </div>
+                    <div>
+                        <label htmlFor="username">Username</label>
+                        <input onChange = {this.handleChange} name = "username" type="text"/>
+                    </div>
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input onChange = {this.handleChange} name = "email" type="email"/>
+                    </div>
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input onChange = {this.handleChange} name = "password" type="password"/>
+                    </div>
+                    <div>
+                        <button onClick = {this.register} type = "submit">Register</button>
+                    </div>
+                </div>
+            )
         );
     }
 }
 
 const mapStateToProps = (state) => ({
-    msg: state.authReducer.msg
+    msg: state.authReducer.msg,
+    isData: state.authReducer.isData,
 })
 
 const mapDispatchToProps = (dispatch) => ({

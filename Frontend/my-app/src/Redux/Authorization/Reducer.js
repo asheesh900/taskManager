@@ -33,7 +33,7 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isData: true,
-                msg: action.data
+                msg: action.data.message
             }
 
         case POST_USER_DATA_FAILURE:

@@ -21,7 +21,7 @@ class Navbar extends Component {
         return (
             <div className="nav">
                 <div className = "nav-logo">
-                <img src="https://ordertime.com/wp-content/themes/ordertime/img/OrderTime-Check.png" alt="logo" style = {{height: "50px", width: "50px"}} />
+                    <Link to = "/"><img src="/logo1.png" alt="logo" style = {{height: "50px", width: "50px"}} /></Link>
 
                 </div>
               

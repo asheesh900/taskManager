@@ -10,6 +10,7 @@ class DisplayTask extends Component {
              hours: "",
              minutes: "",
              seconds: "",
+             isTimer: false,
         }
     }
 
@@ -31,11 +32,10 @@ class DisplayTask extends Component {
         await this.setState({
             hours: hours,
             minutes: minutes,
-            seconds: seconds
+            seconds: seconds,
+            isTimer: true,
             
         })
-        // let watch = document.getElementById("watch")
-        // watch.innerHTML = `${this.state.hours || "00"} : ${this.state.minutes || "00"} : ${this.state.seconds || "00"}`
         this.timerId = setInterval(() => {
             this.tick()
         }, 1000)
@@ -77,7 +77,18 @@ class DisplayTask extends Component {
         const {tasks, isTaskData} = this.props;
         return (
             <>
-            <div>Remaining Time: <span id = "watch">{`${this.state.hours || "00"} hrs : ${this.state.minutes || "00"} mins : ${this.state.seconds || "00"} secs`} </span></div>
+            {
+                this.state.isTimer ?
+                (
+                    <>
+                    <div className = "timer">Remaining Time: <span id = "watch">{`${this.state.hours || "00"} hrs : ${this.state.minutes || "00"} mins : ${this.state.seconds || "00"} secs`} </span></div>
+                    <hr/>
+                    </>
+                ) :
+                (
+                    null
+                )
+            }
             <div className="tasks-main">
                 <div className="tasks">
                     <div className = "task-name">Task Name</div>

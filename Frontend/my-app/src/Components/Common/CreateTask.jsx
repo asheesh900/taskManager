@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {scheduleTask,getAllTasks} from '../../Redux/Tasks/Action'
+import {scheduleTask} from '../../Redux/Tasks/Action'
 
 class CreateTask extends Component {
     constructor(props) {
@@ -45,7 +45,7 @@ class CreateTask extends Component {
             task_name: this.state.taskName,
             start_time: this.state.startTime,
             end_time: this.state.endTime,
-            remaining_time: JSON.stringify(msToTime(remainingTimeInMs))
+            remaining_time: (msToTime(remainingTimeInMs))
         }
 
         const token = this.props.token

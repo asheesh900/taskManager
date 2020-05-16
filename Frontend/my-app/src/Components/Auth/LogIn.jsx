@@ -32,7 +32,7 @@ class LogIn extends Component {
     render() {
         const {isLogin, token} = this.props
         return (
-                isLogin ?
+                token ?
                 (
                     <Redirect to = "/dashboard" />
                 ):

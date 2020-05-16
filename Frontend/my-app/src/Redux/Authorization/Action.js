@@ -41,10 +41,15 @@ export const registerUser = (userInfo) => {
        return axios
            .post(url, userInfo)
            .then(res => {
-               alert(res.data)
+            //    console.log(res)
+               alert(res.data.message)
                 dispatch(postSuccess(res))
            })
-           .catch(err => dispatch(postFailure(err)))
+           .catch(err => {
+               alert(err)
+                // console.log(err)
+               dispatch(postFailure(err))
+           })
 
    }
 }
