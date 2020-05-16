@@ -30,7 +30,7 @@ class LogIn extends Component {
     }
     
     render() {
-        const {isLogin, token} = this.props
+        const {token} = this.props
         return (
                 token ?
                 (

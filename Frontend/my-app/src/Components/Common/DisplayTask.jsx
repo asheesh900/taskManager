@@ -74,54 +74,60 @@ class DisplayTask extends Component {
     
     render() {
         // console.log( this.props.tasks)
-        const {tasks, isTaskData} = this.props;
+        const {tasks} = this.props;
         return (
-            <>
-            {
-                this.state.isTimer ?
-                (
-                    <>
-                    <div className = "timer">Remaining Time: <span id = "watch">{`${this.state.hours || "00"} hrs : ${this.state.minutes || "00"} mins : ${this.state.seconds || "00"} secs`} </span></div>
-                    <hr/>
-                    </>
-                ) :
-                (
-                    null
-                )
-            }
-            <div className="tasks-main">
-                <div className="tasks">
-                    <div className = "task-name">Task Name</div>
-                    <div>Start</div>
-                    <div>End</div>
-                    <div>Allotted Time</div>
-                    <div>Action</div>
+          <>
+            {this.state.isTimer ? (
+              <>
+                <div className="timer">
+                  Remaining Time:{" "}
+                  <span id="watch">
+                    {`${this.state.hours || "00"} hrs : ${
+                      this.state.minutes || "00"
+                    } mins : ${this.state.seconds || "00"} secs`}{" "}
+                  </span>
                 </div>
                 <hr />
-                
-                    {
-                       tasks.length > 0 && tasks.map((task) => {
-                           return (
-                            <>
-                                <div className="tasks-content" key = {task.task_id}>
-                                    <div className = "task-name"><span>{task.task_name}</span></div>
-                                    <div>{task.start_time}</div>
-                                    <div>{task.end_time} </div>
-                                    <div>{task.remaining_time} </div>
-                                    <div >
-                                        <button value = {task.remaining_time} onClick = {this.startTimer} className="task-btn">Timer</button>
-                                    </div>
-                                </div>
-                                <hr/>
-                            </>
-                           )
-                       }) 
-                    }
-                    
-                
+              </>
+            ) : null}
+            <div className="tasks-main">
+              <div className="tasks">
+                <div className="task-name">Task Name</div>
+                <div>Start</div>
+                <div>End</div>
+                <div>Allotted Time</div>
+                <div>Action</div>
+              </div>
+              <hr />
+
+              {tasks.length > 0 &&
+                tasks.map((task) => {
+                  return (
+                    <>
+                      <div className="tasks-content" key={task.task_id}>
+                        <div className="task-name">
+                          <span>{task.task_name}</span>
+                        </div>
+                        <div>{task.start_time}</div>
+                        <div>{task.end_time} </div>
+                        <div>{task.remaining_time} </div>
+                        <div>
+                          <button
+                            value={task.remaining_time}
+                            onClick={this.startTimer}
+                            className="task-btn"
+                          >
+                            Timer
+                          </button>
+                        </div>
+                      </div>
+                      <hr />
+                    </>
+                  );
+                })}
             </div>
-            </>
-        )
+          </>
+        );
     }
 }
 

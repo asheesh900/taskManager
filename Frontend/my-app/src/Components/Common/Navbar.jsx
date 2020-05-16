@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Link, Redirect} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
@@ -10,13 +10,10 @@ class Navbar extends Component {
     constructor(props) {
         super(props)
     
-        this.state = {
-             
-        }
     }
     
     render() {
-        const {token, isLogin, username} = this.props
+        const {token, username} = this.props
         console.log(this.props)
         return (
             <div className="nav">

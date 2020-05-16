@@ -55,8 +55,6 @@ class CreateTask extends Component {
     }
     
     render() {
-        let data = this.props.location.data
-        // console.log(data)
         return (
             
             <div className="create-task">

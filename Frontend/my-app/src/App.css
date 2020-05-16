@@ -20,7 +20,6 @@ body {
 }
 
 .nav-logOut {
-  /* margin: auto; */
   height: 100%;
   width: 130px;
   margin-right: 20px;
@@ -39,7 +38,7 @@ body {
 /* Home Page */
 
 #homeImg {
-  background-image: url("https://lovematch.love/wp-content/uploads/2018/02/the-cure-for-chronic-time-constraint-disease.jpg");
+  background-image: url("/coverPage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 92vh;
