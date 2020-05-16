@@ -5,6 +5,7 @@ import LogIn from '../Components/Auth/LogIn'
 import Signup from '../Components/Auth/Signup'
 import Dashboard from '../Components/Common/Dashboard'
 import Home from '../Components/Common/Home'
+import CreateTask from '../Components/Common/CreateTask'
 
 export default class Routes extends Component {
     render() {
@@ -16,6 +17,7 @@ export default class Routes extends Component {
                     <Route path = "/signup" component = {Signup} />
                     <Route path = "/logIn" component = {LogIn} />
                     <Route path = "/dashboard" component = {props => <Dashboard {...props} />} />
+                    <Route path = "/createTask" component = {props => <CreateTask {...props}/>} />
                 </Switch>
             </>
         )

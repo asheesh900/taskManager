@@ -85,6 +85,13 @@ body {
 
 /* Dashboard */
 
+.dashboard {
+  width: 80%;
+  margin: auto;
+}
+
+/* NewTaskBar */
+
 .projects {
   display: flex;
 /*   border: 1px solid black; */
@@ -133,3 +140,86 @@ body {
   letter-spacing: 0.1em
 }
 
+/* Display Task */
+
+.tasks-main {
+  box-shadow: 0 10px 6px -6px #777;
+}
+
+.tasks {
+  display: flex;
+/*   border: 1px solid black; */
+  justify-content: space-between;
+/*   box-shadow: 0 10px 6px -6px #777; */
+  font-weight: bold;;
+}
+
+.tasks div {
+  margin: 6px 10px;
+  width: 25%;
+  display: flex;
+  justify-content: center;
+}
+
+.tasks-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tasks-content div {
+  margin: 2px 10px;
+  width: 25%;
+   display: flex;
+  justify-content: center;
+}
+
+.task-name {
+  display: flex;
+  justify-content: start;
+  margin-left: 20px;
+}
+
+.task-btn {
+ 
+  padding: 8px 30px;
+/*   margin-right: 10px; */
+  background-color: #3CA05D;
+  border: none;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.1em
+}
+
+/* Create Task */
+
+.create-task {
+  display: grid;
+  width: 400px;
+  grid-template-columns: 1fr 2fr;
+   grid-gap: 10px;
+/*    border:   1px solid black; */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 100px auto;
+}
+
+.create-task input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: groove;
+  background-color: white;
+  border-bottom: 1px solid eee;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.create-task button {
+  padding: 10px 0px;
+  background-color: #3CA05D;
+  border: none;
+  color: white;
+  letter-spacing: 0.1em;
+}

@@ -21,19 +21,19 @@ def createTask():
     task_name = ask['task_name']
     project_name = ask['project_name']
     user_id = token_decoder()['id']
-    print(user_id)
     start_time = ask['start_time']
     end_time = ask['end_time']
+    remaining_time = ask['remaining_time']
 
     query1 = """SELECT id FROM projects WHERE project_name = %s"""
-    query2 = """INSERT INTO tasks (task_name, project_id, user_id, start_time, end_time) VALUES (%s, %s, %s, %s, %s)"""
+    query2 = """INSERT INTO tasks (task_name, project_id, user_id, start_time, end_time, remaining_time) VALUES (%s, %s, %s, %s, %s, %s)"""
 
     cursor = mysql.connection.cursor()
     cursor.execute(query1,(project_name,))
     result = cursor.fetchall()
     project_id = result[0]["id"]
 
-    cursor.execute(query2, (task_name, project_id, user_id, start_time, end_time))
+    cursor.execute(query2, (task_name, project_id, user_id, start_time, end_time, remaining_time))
     mysql.connection.commit()
     cursor.close()
     return {"message": "Task created successfully"}
@@ -46,7 +46,7 @@ def tasks():
     
     query = """SELECT tasks.id AS task_id, task_name,
      projects.project_name AS project_name, users.name,
-     users.username, users.email, start_time, end_time
+     users.username, users.email, start_time, end_time, remaining_time
      from tasks LEFT JOIN projects ON
      projects.id = tasks.project_id LEFT JOIN users 
      ON users.id = tasks.user_id WHERE user_id = %s ORDER BY start_time ASC """
