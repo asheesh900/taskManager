@@ -74,7 +74,7 @@ class DisplayTask extends Component {
     
     render() {
         const {tasks} = this.props;
-        console.log(tasks)
+        // console.log(tasks)
         return (
           <>
             {this.state.isTimer ? (
