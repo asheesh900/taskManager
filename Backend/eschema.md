@@ -20,6 +20,6 @@ CREATE TABLE projects (id INT NOT NULL AUTO_INCREMENT, project_name VARCHAR (255
 
 ```sql
 
-CREATE TABLE tasks (id INT NOT NULL AUTO_INCREMENT, task_name VARCHAR (255) NOT NULL, project_id INT, user_id INT, start_time VARCHAR(255) NOT NULL, end_time VARCHAR (255) NOT NULL, PRIMARY KEY (id), FOREIGN KEY (project_id) REFERENCES projects (id), FOREIGN KEY (user_id) REFERENCES users (id)); 
+CREATE TABLE tasks (id INT NOT NULL AUTO_INCREMENT, task_name VARCHAR (255) NOT NULL, project_id INT, user_id INT, start_time VARCHAR(255) NOT NULL, end_time VARCHAR (255) NOT NULL, remaining_time VARCHAR (255) NOT NULL, PRIMARY KEY (id), FOREIGN KEY (project_id) REFERENCES projects (id), FOREIGN KEY (user_id) REFERENCES users (id)); 
 ```
 
