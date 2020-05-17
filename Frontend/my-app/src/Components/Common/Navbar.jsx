@@ -7,10 +7,6 @@ import {signOut} from '../../Redux/Authorization/Action'
  
 
 class Navbar extends Component {
-    constructor(props) {
-        super(props)
-    
-    }
     
     render() {
         const {token, username} = this.props

@@ -216,7 +216,7 @@ body {
 
 .task-name {
   display: flex !important;
-  justify-content: start !important;
+  justify-content: flex-start !important;
   margin-left: 20px !important;
 }
 

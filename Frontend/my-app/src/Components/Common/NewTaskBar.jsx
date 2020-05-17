@@ -10,10 +10,17 @@ class NewTaskBar extends Component {
         this.state = {
              projectName: ""
         }
+
+        this.ifMounted = false;
     }
 
     componentDidMount = () => {
-        this.props.getProjects()
+        this.ifMounted = true;
+        this.ifMounted && this.props.getProjects()
+    }
+
+    componentWillUnmount = () => {
+        this.ifMounted = false;
     }
 
     handleSelect = (e) => {

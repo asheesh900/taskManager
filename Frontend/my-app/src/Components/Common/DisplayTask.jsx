@@ -12,30 +12,38 @@ class DisplayTask extends Component {
              seconds: "",
              isTimer: false,
         }
+
+        this.ifMounted = false;
     }
 
+
     componentDidMount = () => {
+      this.ifMounted = true;
         if(this.props.isLogin) {
             const token = this.props.token
-            this.props.getAllTasks(token)
+          this.ifMounted && this.props.getAllTasks(token)
         }
+    }
 
-
+    componentWillUnmount = () => {
+      this.ifMounted = false;
     }
 
     startTimer = async (e) => {
+      this.ifMounted = true;
         // console.log(e.target.value)
         let timeArr = e.target.value.split(":")
         let hours = Number(timeArr[0])
         let minutes = Number(timeArr[1])
         let seconds = Number(timeArr[2])
-        await this.setState({
+        await this.ifMounted && this.setState({
             hours: hours,
             minutes: minutes,
             seconds: seconds,
             isTimer: true,
             
         })
+        
         this.timerId = setInterval(() => {
             this.tick()
         }, 1000)
