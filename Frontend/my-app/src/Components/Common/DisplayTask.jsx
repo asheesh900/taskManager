@@ -93,6 +93,7 @@ class DisplayTask extends Component {
             <div className="tasks-main">
               <div className="tasks">
                 <div className="task-name">Task Name</div>
+                <div>Project Name</div>
                 <div>Start</div>
                 <div>End</div>
                 <div>Allotted Time</div>
@@ -103,11 +104,12 @@ class DisplayTask extends Component {
               {tasks.length > 0 &&
                 tasks.map((task) => {
                   return (
-                    <>
-                      <div className="tasks-content" key={task.task_id}>
+                    <div key={task.task_id}>
+                      <div className="tasks-content">
                         <div className="task-name">
                           <span>{task.task_name}</span>
                         </div>
+                        <div>{task.project_name} </div>
                         <div>{task.start_time}</div>
                         <div>{task.end_time} </div>
                         <div>{task.remaining_time} </div>
@@ -122,7 +124,7 @@ class DisplayTask extends Component {
                         </div>
                       </div>
                       <hr />
-                    </>
+                    </div>
                   );
                 })}
             </div>
