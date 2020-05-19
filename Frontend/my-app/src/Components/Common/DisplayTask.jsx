@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {getAllTasks} from '../../Redux/Tasks/Action'
+import StartBtn from "./StartBtn"
 
 class DisplayTask extends Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class DisplayTask extends Component {
              minutes: "",
              seconds: "",
              isTimer: false,
+             isStart: true,
         }
 
         this.ifMounted = false;
@@ -23,30 +25,48 @@ class DisplayTask extends Component {
             const token = this.props.token
           this.ifMounted && this.props.getAllTasks(token)
         }
+
     }
 
     componentWillUnmount = () => {
       this.ifMounted = false;
+      localStorage.clear()
     }
 
     startTimer = async (e) => {
       this.ifMounted = true;
-        // console.log(e.target.value)
-        let timeArr = e.target.value.split(":")
-        let hours = Number(timeArr[0])
-        let minutes = Number(timeArr[1])
-        let seconds = Number(timeArr[2])
-        await this.ifMounted && this.setState({
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds,
+
+        let time = JSON.parse(localStorage.getItem(e.target.name))
+
+        if(!time || (time.hours && time.minutes && time.seconds)) {
+          let timeArr = e.target.value.split(":")
+          let hours = Number(timeArr[0])
+          let minutes = Number(timeArr[1])
+          let seconds = Number(timeArr[2])
+          await this.ifMounted && this.setState({
+              hours: hours,
+              minutes: minutes,
+              seconds: seconds,
+              isTimer: true,
+              isStart: false
+              
+          })
+          
+          this.timerId = setInterval(() => {
+              this.tick()
+          }, 1000)
+        } else {
+          this.setState({
+            hours: time.hours,
+            minutes: time.minutes,
+            seconds: time.seconds,
             isTimer: true,
-            
+            isStart: false
         })
-        
-        this.timerId = setInterval(() => {
-            this.tick()
-        }, 1000)
+            this.timerId = setInterval(() => {
+              this.tick()
+          }, 1000)
+        }
         
     }
 
@@ -74,11 +94,22 @@ class DisplayTask extends Component {
         if(this.state.seconds === 0 && this.state.minutes === 0 && this.state.hours === 0)
          {
             clearInterval(this.timerID)
+            
 
          }
     }
 
-    
+    stopTimer = (e) => {
+     let time = {
+       hours: this.state.hours,
+       minutes: this.state.minutes,
+       seconds: this.state.seconds,
+     }
+
+     localStorage.setItem(e.target.name, JSON.stringify(time))
+     return clearInterval(this.timerId)
+      
+    }
     
     render() {
         const {tasks} = this.props;
@@ -105,7 +136,7 @@ class DisplayTask extends Component {
                 <div>Start</div>
                 <div>End</div>
                 <div>Allotted Time</div>
-                <div>Action</div>
+                <div>Timer</div>
               </div>
               <hr />
 
@@ -122,13 +153,12 @@ class DisplayTask extends Component {
                         <div>{task.end_time} </div>
                         <div>{task.remaining_time} </div>
                         <div>
-                          <button
-                            value={task.remaining_time}
-                            onClick={this.startTimer}
-                            className="task-btn"
-                          >
-                            Timer
-                          </button>
+                          <StartBtn
+                          key1 = {task.task_id}
+                           task={task.remaining_time}
+                           startTimer={this.startTimer}
+                           stopTimer={this.stopTimer}
+                           />
                         </div>
                       </div>
                       <hr />

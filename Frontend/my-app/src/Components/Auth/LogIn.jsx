@@ -37,20 +37,22 @@ class LogIn extends Component {
                     <Redirect to = "/dashboard" />
                 ):
                 (
-                    <div className = "signup">
-                        <h1>Log In</h1>
-                        <div>
-                            <label htmlFor="email">Email</label>
-                            <input onChange = {this.handleChange} name = "email" type="email"/>
+                    <form>
+                        <div className = "signup">
+                            <h1>Log In</h1>
+                            <div>
+                                <label htmlFor="email">Email</label>
+                                <input onChange = {this.handleChange} name = "email" type="email"/>
+                            </div>
+                            <div>
+                                <label htmlFor="password">Password</label>
+                                <input onChange = {this.handleChange} name = "password" type="password"/>
+                            </div>
+                            <div>
+                                <button onClick = {this.logIn} type = "submit">Log In</button>
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor="password">Password</label>
-                            <input onChange = {this.handleChange} name = "password" type="password"/>
-                        </div>
-                        <div>
-                            <button onClick = {this.logIn} type = "submit">Log In</button>
-                        </div>
-                    </div>
+                    </form>
                 )
         );
     }

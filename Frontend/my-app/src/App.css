@@ -28,6 +28,14 @@ body {
   align-items: center;
 }
 
+.signout-logo {
+  color: red;
+}
+
+.signout-logo:hover {
+  transform: scale(1.5);
+}
+
 .nav-logo {
   width: 100px;
   display: flex;
@@ -126,11 +134,11 @@ body {
 
 .projects {
   display: flex;
-/*   border: 1px solid black; */
   height: 70px;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-top: 20px;
 }
 
 .proj-search {
@@ -184,14 +192,12 @@ body {
 /* Display Task */
 
 .tasks-main {
-  box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0px 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .tasks {
   display: flex;
-/*   border: 1px solid black; */
   justify-content: space-between;
-/*   box-shadow: 0 10px 6px -6px #777; */
   font-weight: bold;;
 }
 
@@ -223,7 +229,6 @@ body {
 .task-btn {
  
   padding: 8px 30px;
-/*   margin-right: 10px; */
   background-color: #3CA05D;
   border: none;
   color: white;
@@ -237,8 +242,7 @@ body {
   display: grid;
   width: 400px;
   grid-template-columns: 1fr 2fr;
-   grid-gap: 10px;
-/*    border:   1px solid black; */
+  grid-gap: 10px;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);

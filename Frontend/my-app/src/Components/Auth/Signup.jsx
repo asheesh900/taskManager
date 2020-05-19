@@ -41,28 +41,30 @@ class Signup extends Component {
                 <Redirect to = "/logIn" />
             ) :
             (
-                <div className = "signup">
-                    <h1>Signup</h1>
-                    <div>
-                        <label htmlFor="name">Name</label>
-                        <input onChange = {this.handleChange} name = "name" type="text"/>
+                <form>
+                    <div className = "signup">
+                        <h1>Signup</h1>
+                        <div>
+                            <label htmlFor="name">Name</label>
+                            <input onChange = {this.handleChange} name = "name" type="text"/>
+                        </div>
+                        <div>
+                            <label htmlFor="username">Username</label>
+                            <input onChange = {this.handleChange} name = "username" type="text"/>
+                        </div>
+                        <div>
+                            <label htmlFor="email">Email</label>
+                            <input onChange = {this.handleChange} name = "email" type="email"/>
+                        </div>
+                        <div>
+                            <label htmlFor="password">Password</label>
+                            <input onChange = {this.handleChange} name = "password" type="password"/>
+                        </div>
+                        <div>
+                            <button onClick = {this.register} type = "submit">Register</button>
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="username">Username</label>
-                        <input onChange = {this.handleChange} name = "username" type="text"/>
-                    </div>
-                    <div>
-                        <label htmlFor="email">Email</label>
-                        <input onChange = {this.handleChange} name = "email" type="email"/>
-                    </div>
-                    <div>
-                        <label htmlFor="password">Password</label>
-                        <input onChange = {this.handleChange} name = "password" type="password"/>
-                    </div>
-                    <div>
-                        <button onClick = {this.register} type = "submit">Register</button>
-                    </div>
-                </div>
+                </form>
             )
         );
     }

@@ -25,7 +25,7 @@ class Navbar extends Component {
                         (
                             <div className = "nav-logOut">
                                 <span>{username} </span>
-                                <span><FontAwesomeIcon onClick = {this.props.signOut} icon={faPowerOff} /></span>
+                                <span className = "signout-logo"><FontAwesomeIcon onClick = {this.props.signOut} icon={faPowerOff} /></span>
                             </div>
                         ) :
                         (
