@@ -57,7 +57,7 @@ class NewTaskBar extends Component {
                 <div>
                     <Link to = {{
                         pathname:"/createTask",
-                        data: this.state.projectName
+                        state:{data: this.state.projectName}
                     }} ><button onClick = {this.newTask} className="task-btn">New Task</button></Link>
                 </div>
             </div>

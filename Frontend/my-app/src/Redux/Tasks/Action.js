@@ -95,7 +95,7 @@ export const getAllTasks = (token) => {
                 headers: headers
             })
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 dispatch(getSuccess(res.data))
             })
             .catch(err => dispatch(getFailure(err)))

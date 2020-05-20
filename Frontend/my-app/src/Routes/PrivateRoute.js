@@ -4,9 +4,9 @@ import {Route, Redirect} from 'react-router-dom'
 
 function PrivateRoute({component:Component, token, ...rest}) {
     return (
-        <Route {...rest} render={()=>{
+        <Route {...rest} render={(props)=>{
             if(token){
-                return <Component/>
+                return <Component {...props}/>
             }
             return <Redirect to='/login'/>
         }}/>

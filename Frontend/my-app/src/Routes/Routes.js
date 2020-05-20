@@ -18,7 +18,7 @@ export default class Routes extends Component {
                     <Route path = "/signup" component = {Signup} />
                     <Route path = "/logIn" component = {LogIn} />
                     <PrivateRoute path = "/dashboard" component = {props => <Dashboard {...props} />} />
-                    <Route path = "/createTask" component = {props => <CreateTask {...props}/>} />
+                    <PrivateRoute path = "/createTask" component = {props => <CreateTask {...props}/>} />
                 </Switch>
             </>
         )

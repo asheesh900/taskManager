@@ -142,6 +142,7 @@ class DisplayTask extends Component {
 
               {tasks.length > 0 &&
                 tasks.map((task) => {
+                  // console.log(task)
                   return (
                     <div key={task.task_id}>
                       <div className="tasks-content">
@@ -154,7 +155,7 @@ class DisplayTask extends Component {
                         <div>{task.remaining_time} </div>
                         <div>
                           <StartBtn
-                          key1 = {task.task_id}
+                           key1 = {task.task_id}
                            task={task.remaining_time}
                            startTimer={this.startTimer}
                            stopTimer={this.stopTimer}

@@ -16,7 +16,7 @@ class CreateTask extends Component {
 
     handleChange = (e) => {
         this.setState({
-            projectName: this.props.location.data,
+            projectName: this.props.location.state.data,
             [e.target.name]: e.target.value,
 
         })
@@ -55,16 +55,21 @@ class CreateTask extends Component {
     }
     
     render() {
+        // console.log(this.props)
+        const {data} = this.props.location.state
         return (
-            
-            <div className="create-task">
-                    <label htmlFor="task-name">Task Name</label>
-                    <input onChange = {this.handleChange} name = "taskName" id = "task-name" type="text" placeholder = "Enter you task"/>
-                    <label htmlFor="start-time">Start Time</label>
-                    <input onChange = {this.handleChange} name = "startTime" id = "start-time" type="datetime-local"/>
-                    <label htmlFor="start-time">End Time</label>
-                    <input onChange = {this.handleChange} name = "endTime" id = "end-time" type="datetime-local"/>
-                    <button onClick = {this.createTask} type = "submit">Create Task</button>
+            <div className = "task-creation-wrapper">
+                <h1 >Project Name: {data} </h1>
+                <div className="create-task">
+                        <label htmlFor="task-name">Task Name</label>
+                        <input onChange = {this.handleChange} name = "taskName" id = "task-name" type="text" placeholder = "Enter you task"/>
+                        <label htmlFor="start-time">Start Time</label>
+                        <input onChange = {this.handleChange} name = "startTime" id = "start-time" type="datetime-local"/>
+                        <label htmlFor="end-time">End Time</label>
+                        <input onChange = {this.handleChange} name = "endTime" id = "end-time" type="datetime-local"/>
+                        <button onClick = {this.createTask} type = "submit">Create Task</button>
+                        <button onClick = {() => this.props.history.push("/dashboard")} type = "submit">Discard</button>
+                </div>
             </div>
         )
     }
